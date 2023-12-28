@@ -16,7 +16,7 @@ func NewRouter(
 	router.DELETE("/jti/api/delete/:Id", PhoneNumberController.Delete)
 	router.GET("/jti/api/get-all", PhoneNumberController.GetAll)
 	router.GET("/jti/api/get/:Id", PhoneNumberController.GetById)
-	router.GET("jti/api/auto", PhoneNumberController.Auto)
+	router.GET("/jti/api/auto", PhoneNumberController.Auto)
 
 	router.PanicHandler = exception.ErrorHandler
 

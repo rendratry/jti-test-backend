@@ -25,7 +25,7 @@ func NewPhoneNumberServiceImpl(phoneNumberRepository repository.PhoneNumberRepos
 	}
 }
 
-func (service *PhoneNumberServiceImpl) Save(ctx context.Context, request web.SavePhoneNumberRequest) web.PhoneNumberResponse {
+func (service *PhoneNumberServiceImpl) Save(ctx context.Context, request web.SavePhoneNumberRequest) web.SavePhoneNumberResponse {
 	err := service.Validate.Struct(request)
 	helper.PanicIfError(err)
 	tx := service.DB.Begin()
@@ -76,13 +76,13 @@ func (service *PhoneNumberServiceImpl) GetAll(ctx context.Context) []domain.Phon
 	return numbers
 }
 
-func (service *PhoneNumberServiceImpl) GetById(ctx context.Context, ID int) web.PhoneNumberResponse {
+func (service *PhoneNumberServiceImpl) GetById(ctx context.Context, ID int) domain.PhoneNumber {
 	tx := service.DB.Begin()
 	defer helper.CommitOrRollback(tx)
 
 	number := service.PhoneNumberRepository.GetById(ctx, tx, ID)
 
-	return helper.ToGetPhoneNumberResponse(number)
+	return number
 }
 
 func (service *PhoneNumberServiceImpl) Auto(ctx context.Context) string {

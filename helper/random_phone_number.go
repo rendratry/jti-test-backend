@@ -24,7 +24,7 @@ func RandomPhoneNumber() string {
 var table = [...]byte{'1', '2', '3', '4', '5', '6', '7', '8', '9', '0'}
 
 func RandomProvider() string {
-	stringProvider := []string{"TELKOMSEL", "INDOSAT", "XL", "By.U", "SMARTFREN", "MENTARI"}
+	stringProvider := []string{"TELKOMSEL", "INDOSAT", "XL", "By.U", "SMARTFREN", "MENTARI", "3"}
 	randomIndex, err := rand.Int(rand.Reader, big.NewInt(int64(len(stringProvider))))
 	if err != nil {
 		panic(err)

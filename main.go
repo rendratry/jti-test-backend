@@ -1,6 +1,7 @@
 package main
 
 import (
+	"jti-test-backend/helper"
 	"jti-test-backend/middleware"
 	"net/http"
 )
@@ -13,8 +14,8 @@ func NewServer(authMiddleware *middleware.AuthMiddleware) *http.Server {
 }
 
 func main() {
-	//server := InitializedServer()
-	//
-	//err := server.ListenAndServe()
-	//helper.PanicIfError(err)
+	server := InitializedServer()
+
+	err := server.ListenAndServe()
+	helper.PanicIfError(err)
 }
